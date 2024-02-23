@@ -5,7 +5,7 @@ permissions:
 
 on:
     schedule:
-        - cron: '30 15 * * *'
+        - cron: '45 * * * *'
 
 jobs:
     run:
@@ -13,5 +13,5 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - run: pip install requirements.txt
+            - run: pip install -r requirements.txt
             - run: python daily_quote.py
