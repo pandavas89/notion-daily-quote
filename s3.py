@@ -14,10 +14,11 @@ s3_client = boto3.client(
     aws_secret_access_key=AWS_SECRET_ACCESS_KEY
 )
 
-response = s3_client.get_object(Bucket=AWS_S3_BUCKET, Key='dharma sutra_kr.xlsx')
-status = response.get('ResponseMetadata', {}).get('HTTPStatusCode')
+def read_quote(bucket: str, file_name: str) -> tuple:
+    response = s3_client.get_object(Bucket=bucket, Key=file_name)
+    status = response.get('ResponseMetadata', {}).get('HTTPStatusCode')
 
-if status == 200:
-    print(f'Successful S3 get_object response. Status - {status}')
-    target_df = pd.read_excel(io.BytesIO(response['Body'].read()))
-    print(target_df)
+    if status == 200:
+        target_df = pd.read_excel(io.BytesIO(response['Body'].read()))
+        return True, target_df
+    return False, pd.DataFrame()
