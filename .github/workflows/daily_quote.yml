@@ -1,0 +1,16 @@
+name: daily quote
+
+permissions:
+    contents: write
+
+on:
+    schedule:
+        - cron: '0 0 * * *'
+
+jobs:
+    run:
+        runs-on: ubuntu-latest
+
+        steps:
+            - run: pip install requirements.txt
+            - run: python daily_quote.py
