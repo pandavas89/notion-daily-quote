@@ -8,7 +8,7 @@ from notion_client.helpers import iterate_paginated_api as paginate
 
 
 class Notion():
-    client = Client(auth=os.getenv('NOTION_API'))
+    client = Client(auth=os.getenv('secrets.NOTION_API'))
 
     def find_today_page(self, database_id: str) -> tuple:
         '''
