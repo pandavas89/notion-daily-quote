@@ -1,21 +1,21 @@
 '''
 app that inserts designated api based on notion api
 '''
-from dotenv import load_dotenv
 from pprint import pprint
 import datetime
-import os
 import pandas as pd
 
 from notion_client import Client
 from notion_client.helpers import iterate_paginated_api as paginate
 
-import dynamodb
-import s3
-import notion
+from dynamodb import DynamoDB
+from s3 import S3
+from notion import Notion
 
 
-load_dotenv()
+dynamodb = DynamoDB()
+s3 = S3()
+notion = Notion()
 
 # 명언 데이터베이스 정보 취득
 quote_datas = dynamodb.read_datas()
@@ -25,7 +25,7 @@ today = today.date()
 
 # 명언 데이터베이스별 처리
 for quote in quote_datas:
-    status, df = dynamodb.read_quote(quote['bucket'], quote['file'])
+    status, df = s3.read_quote(quote['bucket'], quote['file'])
     quote_modular = df.shape[0]
     subscriptions = dynamodb.read_subscription(quote['quote_id'], quote_modular, today)
     for mod, sub_list in subscriptions.items():
