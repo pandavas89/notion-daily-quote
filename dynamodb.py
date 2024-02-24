@@ -8,8 +8,8 @@ from boto3.dynamodb.conditions import Key
 
 load_dotenv()
 class DynamoDB():
-    AWS_ACCESS_KEY_ID = os.getenv("secrets.AWS_ACCESS_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = os.getenv("secrets.AWS_SECRET_ACCESS_KEY")
+    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
     AWS_SESSION_TOKEN = os.getenv("AWS_SESSION_TOKEN")
 
     dynamodb = boto3.resource(

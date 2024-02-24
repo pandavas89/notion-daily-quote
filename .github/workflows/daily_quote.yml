@@ -8,6 +8,11 @@ on:
         - cron: '0/5 * * * *'
 
 jobs:
+    env: 
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        NOTION_API: ${{ secrets.NOTION_API }}
+
     run:
         environment: notion_daily_quote
         runs-on: ubuntu-latest
