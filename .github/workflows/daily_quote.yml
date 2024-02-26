@@ -4,8 +4,9 @@ permissions:
     contents: write
 
 on:
+    # Notion Cron Job이 정확하게 자정에 가동하지 않으므로 01시(UTC+9)로 적용
     schedule:
-        - cron: '0/5 * * * *'
+        - cron: '0 16 * * *'
 
 env:
     NOTION_API: ${{ secrets.NOTION_API}}
