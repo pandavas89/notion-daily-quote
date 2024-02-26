@@ -4,9 +4,9 @@ permissions:
     contents: write
 
 on: 
-    # notddion 생성 시간을 고려하여 01시(UTC +9)로 설정
+    # notddion 생성 시간을 고려하여 04시(UTC +9)로 설정
     schedule:
-        - cron: '0 16 * * *'
+        - cron: '0 19 * * *'
     workflow_dispatch:
 
 env:
