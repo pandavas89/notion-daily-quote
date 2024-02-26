@@ -9,10 +9,6 @@ class S3():
     AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
     AWS_SESSION_TOKEN = os.getenv("AWS_SESSION_TOKEN")
     
-    print('environment key check')
-    print(os.getenv('GITHUB_SHA'))
-    print(len(AWS_ACCESS_KEY_ID), len(AWS_SECRET_ACCESS_KEY))
-    
     s3_client = boto3.client(
         's3',
         aws_access_key_id=AWS_ACCESS_KEY_ID,

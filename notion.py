@@ -16,8 +16,8 @@ class Notion():
         '''
         page_list = []
         target_id = ''
-        for idx, page in enumerate(paginate(self.client.databases.query, database_id=database_id, page_size=1)):
-            if idx > 2:
+        for idx, page in enumerate(paginate(self.client.databases.query, database_id=database_id)):
+            if idx > 5:
                 break
             page_list.append(page)
         
@@ -30,12 +30,12 @@ class Notion():
                 block_found, block_id = self.search_block(page['id'])
                 if block_found:
                     return block_found, block_id
-        print("Today's block with database_id is not found on {database_id}")
+        print(f"Today's block with database_id is not found on {database_id}")
         return False, target_id
     
     def search_block(self, page_id: str) -> tuple:
         '''
-        recursively search throguh page for given starting block - [QUOTE]
+        [QUOTE] 구문이 존재하는 블럭을 찾고, 존재한다면 True, {block_id}를 리턴한다. 존재하지 않는다면 False, ''을 리턴한다.
         '''
         for block in paginate(self.client.blocks.children.list, block_id=page_id):
             if block['has_children']:
