@@ -4,9 +4,9 @@ permissions:
     contents: write
 
 on:
-    # Notion Cron Job이 정확하게 자정에 가동하지 않으므로 01시(UTC+9)로 적용
+    # notddion 생성 시간을 고려하여 01시(UTC +9)로 설정
     schedule:
-        - cron: '0 16 * * *'
+        - cron: '0/5 * * * *'
 
 env:
     NOTION_API: ${{ secrets.NOTION_API}}
@@ -19,5 +19,10 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+            - uses: actions/setup-python@v5
+              with:
+                python-version: '3.11'
+                cache: 'pip'
             - run: pip install -r requirements.txt
+            
             - run: python daily_quote.py
