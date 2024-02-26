@@ -1,12 +1,8 @@
 '''
 app that inserts designated api based on notion api
 '''
-from pprint import pprint
 import datetime
-import pandas as pd
 
-from notion_client import Client
-from notion_client.helpers import iterate_paginated_api as paginate
 
 from dynamodb import DynamoDB
 from s3 import S3
