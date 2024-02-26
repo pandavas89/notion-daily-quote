@@ -6,7 +6,7 @@ permissions:
 on: 
     # notddion 생성 시간을 고려하여 01시(UTC +9)로 설정
     schedule:
-        - cron: '0/5 * * * *'
+        - cron: '0 16 * * *'
     workflow_dispatch:
 
 env:
