@@ -29,6 +29,7 @@ for quote in quote_datas:
         today_quote = df.iloc[mod, :]
         # 개별 구독에 대해 처리
         for database_id in sub_list:
+            notion.daily_customization(database_id)
             page_found, block_id = notion.find_today_page(database_id)
             # 당일 문서가 발견된 경우
             if page_found:
