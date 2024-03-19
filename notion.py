@@ -72,7 +72,7 @@ class Notion():
         
         # 오늘 날짜를 KST(UTC+9)로 전환: notion과 github action 모두 UTC를 제공함
         today = datetime.datetime.now()
-        today.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone.dst(9))
+        today = today.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone.dst(9))
         
         # 페이지별로 검사
         for page in page_list:
