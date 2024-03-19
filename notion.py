@@ -48,7 +48,7 @@ class Notion():
                         'Name': {'title': [{'text': {'content': new_title}}]},
                         '일자': {'date': {'start': today.strftime('%Y-%m-%d')}}
                     }
-                    self.client.pages.update(today, properties=update_dict)
+                    self.client.pages.update(page['id'], properties=update_dict)
 
     def get_pages(self, database_id: str, page_count: int) -> list:
         '''
@@ -120,6 +120,7 @@ class Notion():
                         '일자': {'date': {'start': target_date.strftime('%Y-%m-%d')}}
                     }
                     self.client.pages.update(target_id, properties=update_dict)
+                    print(update_dict)
         print(f"Target date's block with database_id is not found on {database_id}")
         return False, target_id
     
