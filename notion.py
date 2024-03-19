@@ -72,7 +72,7 @@ class Notion():
         
         # 오늘 날짜를 KST(UTC+9)로 전환: notion과 github action 모두 UTC를 제공함
         today = datetime.datetime.now()
-        today = today.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone.dst(9))
+        today = today.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone(datetime.timedelta(hours=9)))
         
         # 페이지별로 검사
         for page in page_list:
@@ -80,7 +80,7 @@ class Notion():
 
             # 페이지 작성 일자 추출
             page_date = datetime.datetime.strptime(page_date, '%Y-%m-%dT%H:%M:%S')
-            page_date.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone.dst(9))
+            page_date = page_date.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone(datetime.timedelta(hours=9)))
             
             # 당일 작성 페이지인 경우
             if page_date.date() == today.date():
