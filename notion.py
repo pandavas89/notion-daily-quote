@@ -20,7 +20,7 @@ class Notion():
 
         # 타겟 일자 timezone 부여
         today = datetime.datetime.now()
-        today = today.replace(tzinfo=datetime.timezone.utc).astimezone(self.tz.dst(9))
+        today = today.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone(datetime.timedelta(hours=9)))
 
         for page in self.get_pages(database_id, 3):
             
@@ -28,7 +28,7 @@ class Notion():
             page_date = page['properties']['Created']['created_time'][:-5]
             page_date = datetime.datetime.strptime(page_date, '%Y-%m-%dT%H:%M:%S')
             # 페이지 작성 일자 timezone 부여
-            page_date.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone.dst(9))
+            page_date = page_date.replace(tzinfo=datetime.timezone.utc).astimezone(datetime.timezone(datetime.timedelta(hours=9)))
             
             # 당일 작성 페이지에 해당하는 경우
             if page_date.date() == today.date():
