@@ -3,6 +3,7 @@ import os
 import boto3
 import pandas as pd
 
+# AWS S3 객체
 class S3():
     AWS_S3_BUCKET = os.getenv("AWS_S3_BUCKET")
     AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
