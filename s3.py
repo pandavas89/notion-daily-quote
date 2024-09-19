@@ -5,6 +5,7 @@ import pandas as pd
 
 # AWS S3 객체
 class S3():
+    # 환경 변수로부터 값을 받아오기
     AWS_S3_BUCKET = os.getenv("AWS_S3_BUCKET")
     AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
