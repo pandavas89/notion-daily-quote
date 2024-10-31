@@ -1,8 +1,5 @@
-from dotenv import load_dotenv
-from pprint import pprint
 import os
 import datetime
-from pprint import pprint
 
 from notion_client import Client
 from notion_client.helpers import iterate_paginated_api as paginate
