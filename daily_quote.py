@@ -11,7 +11,7 @@ from notion import Notion
 
 def main():
     dynamodb = DynamoDB()
-    s3 = S3()w
+    s3 = S3()
     notion = Notion()
 
     # 명언 데이터베이스 정보 취득
