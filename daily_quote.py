@@ -28,7 +28,7 @@ def main():
         subscriptions = dynamodb.read_subscription(quote['quote_id'], quote_modular, today)
         for mod, sub_list in subscriptions.items():
             # 오늘의 인용구 추출
-            today_quote = df.iloc[mod, :]
+            today_quote = df[mod + 1]
             # 개별 구독에 대해 처리
             for database_id in sub_list:
                 try:
@@ -38,8 +38,8 @@ def main():
                 page_found, block_id = notion.find_today_page(database_id)
                 # 당일 문서가 발견된 경우
                 if page_found:
-                    notion.replace_quote(block_id, today_quote['Quote'])
-                    notion.insert_quote(block_id, today_quote['Verse'])
+                    notion.replace_quote(block_id, today_quote[1])
+                    notion.insert_quote(block_id, today_quote[0])
                 else:
                     print('block not found')
 

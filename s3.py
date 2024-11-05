@@ -1,7 +1,7 @@
 import io
 import os
 import boto3
-import pandas as pd
+from openpyxl import load_workbook
 
 # AWS S3 객체
 class S3():
@@ -22,6 +22,6 @@ class S3():
         status = response.get('ResponseMetadata', {}).get('HTTPStatusCode')
     
         if status == 200:
-            target_df = pd.read_excel(io.BytesIO(response['Body'].read()))
-            return True, target_df
-        return False, pd.DataFrame()
+            target = load_workbook(io.BytesIO(response['Body'].read()))
+            return True, target
+        return False, [[]]
