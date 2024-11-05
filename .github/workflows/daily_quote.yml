@@ -1,29 +1,29 @@
-name: daily quote
+# name: daily quote
 
-permissions:
-    contents: write
+# permissions:
+#     contents: write
 
-on: 
-    # notddion 생성 시간을 고려하여 04시(UTC +9)로 설정
-    schedule:
-        - cron: '0 19 * * *'
-    workflow_dispatch:
+# on:
+#     # notddion 생성 시간을 고려하여 04시(UTC +9)로 설정
+#     schedule:
+#         - cron: '0 19 * * *'
+#     workflow_dispatch:
 
-env:
-    NOTION_API: ${{ secrets.NOTION_API}}
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+# env:
+#     NOTION_API: ${{ secrets.NOTION_API}}
+#     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-jobs:
-    run:
-        runs-on: ubuntu-latest
+# jobs:
+#     run:
+#         runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-python@v5
-              with:
-                python-version: '3.11'
-                cache: 'pip'
-            - run: pip install -r requirements.txt
-            
-            - run: python daily_quote.py
+#         steps:
+#             - uses: actions/checkout@v4
+#             - uses: actions/setup-python@v5
+#               with:
+#                 python-version: '3.11'
+#                 cache: 'pip'
+#             - run: pip install -r requirements.txt
+
+#             - run: python daily_quote.py
